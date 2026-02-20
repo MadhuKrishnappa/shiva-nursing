@@ -9,22 +9,34 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <Hero />
+      <section id="home">
+        <Hero />
+      </section>
 
       {/* Institute Overview */}
-      <InstituteOverview />
+      <section id="about">
+        <InstituteOverview />
+      </section>
 
       {/* Why Choose Us */}
-      <WhyChooseUs />
+      <section id="why">
+        <WhyChooseUs />
+      </section>
 
       {/* Course Highlights */}
-      <CourseHighlights />
+      <section id="courses">
+        <CourseHighlights />
+      </section>
 
       {/* Admission CTA */}
-      <AdmissionCTA />
+      <section id="admission">
+        <AdmissionCTA />
+      </section>
 
       {/* Contact */}
-      <ContactSection />
+      <section id="contact">
+        <ContactSection />
+      </section>
     </>
   );
 }

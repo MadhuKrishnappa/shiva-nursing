@@ -69,7 +69,7 @@ export default function AdmissionCTA() {
           className="mt-14"
         >
           <Link
-            href="/contact"
+            href="/#contact"
             className="inline-block px-12 py-4 border-2 border-[#D4AF37] text-[#D4AF37] font-semibold tracking-widest uppercase transition-all duration-500 hover:bg-[#D4AF37] hover:text-[#0A1F4D] hover:shadow-[0_0_30px_rgba(212,175,55,0.4)]"
           >
             Enquire Now

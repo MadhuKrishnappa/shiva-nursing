@@ -4,12 +4,12 @@ import "./globals.css";
 import Navbar from "./component/navbar";
 import Footer from "./component/footer";
 
-import { Google_Sans, Inter, Roboto, Playfair_Display } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 
-const roboto = Playfair_Display({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["600", "700"],
-  variable: "--font-playfair",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-jakarta",
 });
 
 export const metadata: Metadata = {
@@ -44,9 +44,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`${jakarta.variable} scroll-smooth`}>
       <body
-        className={`${roboto.variable} bg-white text-[#0B2C6B] antialiased`}
+        className={`font-sans bg-white text-[#0B2C6B] antialiased`}
       >
 
         {/* Navbar */}

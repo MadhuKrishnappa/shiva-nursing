@@ -77,14 +77,14 @@ export default function Hero() {
           className="mt-14 flex flex-wrap justify-center gap-8"
         >
           <Link
-            href="/contact"
+            href="/#admission"
             className="px-10 py-4 bg-[#D4AF37] text-[#0A1F4D] font-semibold tracking-widest uppercase transition-all duration-500 hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] hover:-translate-y-1"
           >
             Apply Now
           </Link>
 
           <Link
-            href="/courses"
+            href="/#courses"
             className="px-10 py-4 border-2 border-[#D4AF37] text-[#D4AF37] font-semibold tracking-widest uppercase transition-all duration-500 hover:bg-[#D4AF37] hover:text-[#0A1F4D]"
           >
             Explore Programs
