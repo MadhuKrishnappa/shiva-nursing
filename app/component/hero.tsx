@@ -1,115 +1,120 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
+import { ChevronRight, Award } from "lucide-react";
 
 export default function Hero() {
-  const images = [
-    "/hero-image.png",
-    "/hero-image2.png",
-    "/hero-image1.png",
-    "/hero-image3.png",
-  ];
-
-  const [index, setIndex] = useState(0);
-
-  // Auto Slide
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % images.length);
-    }, 5000); // change every 5 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
+    <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
 
-      {/* Background Slider */}
-      <div className="absolute inset-0">
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={images[index]}
-            src={images[index]}
-            alt="Nursing students training"
-            className="absolute w-full h-full object-cover"
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.2 }}
+      {/* VIDEO BACKGROUND */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/shiva-nursing2.mp4" type="video/mp4" />
+      </video>
+
+      {/* OVERLAY */}
+      <div className="absolute inset-0 bg-black/40" />
+
+      {/* FLOATING PARTICLES */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(12)].map((_, i) => (
+          <motion.span
+            key={i}
+            animate={{ y: [0, -40, 0] }}
+            transition={{ duration: 6 + i, repeat: Infinity }}
+            className="absolute w-1 h-1 bg-white/40 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              bottom: `${Math.random() * 100}%`,
+            }}
           />
-        </AnimatePresence>
+        ))}
       </div>
 
-      {/* Dark Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0A1F4D]/90 via-[#0A1F4D]/75 to-black/70" />
+      {/* HERO CONTENT */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-28 md:pt-36 text-center flex flex-col items-center">
 
-      {/* Soft Blur */}
-      {/* <div className="absolute inset-0 backdrop-blur-[0.5px]" /> */}
+        {/* ADMISSION BADGE (TOP) */}
+        <div className="inline-flex items-center gap-3 px-5 py-2 border border-white/30 rounded-full bg-white/10 backdrop-blur mb-6">
+          <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse"></span>
+          <span className="text-white text-xs tracking-[0.2em] uppercase font-semibold">
+            Admissions Open 2026–27
+          </span>
+        </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-
-        <motion.span
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-block border border-white/40 px-6 py-2 text-xs tracking-[0.3em] uppercase"
-        >
-          Admissions Open 2026–27
-        </motion.span>
-
+        {/* HEADLINE */}
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mt-8 text-4xl md:text-6xl lg:text-7xl font-bold leading-tight"
+          transition={{ delay: 0.2 }}
+          className="text-4xl md:text-6xl lg:text-7xl font-serif text-white leading-tight"
         >
           Empowering Future
-          <span className="block text-[#D4AF37] mt-3">
+          <span className="block text-[#D4AF37] italic mt-2">
             Nursing Leaders
           </span>
         </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="mt-8 text-lg md:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed"
-        >
-          Blending academic excellence with real-world clinical training,
-          we prepare compassionate professionals for tomorrow’s healthcare challenges.
-        </motion.p>
+        {/* BUTTON AREA */}
+        <div className="mt-14 flex flex-col items-center gap-6">
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2 }}
-          className="mt-12 flex flex-wrap justify-center gap-6"
-        >
           <Link
             href="/#admission"
-            className="px-8 py-4 bg-[#D4AF37] text-[#0A1F4D] font-semibold uppercase tracking-wider rounded-md transition-all duration-300 hover:scale-105"
+            className="
+            group relative inline-flex items-center gap-2
+            px-10 py-4
+            rounded-full
+            text-white text-lg font-semibold
+            bg-white/10
+            backdrop-blur-md
+            border border-white/30
+            shadow-lg shadow-black/20
+            hover:bg-white/20
+            hover:border-white/50
+            hover:scale-105
+            transition-all duration-300
+            "
           >
-            Apply Now
+            <span className="tracking-wide">Apply Now</span>
+
+            <ChevronRight className="transition-transform group-hover:translate-x-1" />
           </Link>
 
-          <Link
-            href="/#courses"
-            className="px-8 py-4 border border-white text-white font-semibold uppercase tracking-wider rounded-md transition-all duration-300 hover:bg-white hover:text-[#0A1F4D]"
-          >
-            Explore Programs
-          </Link>
-        </motion.div>
+        </div>
+
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
-        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
+      {/* FOOTER STRIP */}
+      <div className="absolute bottom-0 left-0 w-full border-t border-white/20 bg-black/40 backdrop-blur-md z-10">
+        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-center gap-3 text-white/90 text-sm text-center">
+          <Award className="text-[#D4AF37]" size={20} />
+          <p className="text-xs md:text-sm">
+            Affiliated to <span className="font-semibold">RGUHS Bengaluru</span> •
+            Recognized by <span className="font-semibold">Govt. of Karnataka</span> •
+            Approved by <span className="font-semibold">KNC & INC</span>
+          </p>
         </div>
       </div>
+
+      {/* BOTTOM FADE */}
+      <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-[#0A1F4D] to-transparent" />
+
+      {/* SCROLL INDICATOR */}
+      <motion.div
+        animate={{ y: [0, 10, 0] }}
+        transition={{ repeat: Infinity, duration: 2 }}
+        className="absolute bottom-8 flex flex-col items-center gap-2"
+      >
+        <div className="w-[1px] h-10 bg-gradient-to-b from-[#D4AF37] to-transparent"></div>
+      </motion.div>
+
     </section>
   );
 }

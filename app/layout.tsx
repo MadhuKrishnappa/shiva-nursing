@@ -26,6 +26,11 @@ export const metadata: Metadata = {
     "Shiva Institute of Nursing",
     "Nursing Admission 2026",
   ],
+
+  icons: {
+    icon: "/favicon.ico",
+  },
+
   openGraph: {
     title: "Shiva Institute of Nursing",
     description:
@@ -35,6 +40,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     type: "website",
   },
+
   metadataBase: new URL("https://yourdomain.com"),
 };
 
