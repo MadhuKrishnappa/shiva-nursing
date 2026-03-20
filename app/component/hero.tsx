@@ -45,7 +45,7 @@ export default function InnovativeHero() {
 
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/apply"
+                href="/#admission"
                 className="bg-[#002366] text-white px-10 py-5 rounded-2xl font-semibold hover:bg-blue-600 transition-all duration-500 flex items-center gap-3 group shadow-xl shadow-blue-900/20"
               >
                 Apply for 2026
@@ -56,7 +56,7 @@ export default function InnovativeHero() {
               </Link>
 
               <Link
-                href="/courses"
+                href="/#courses"
                 className="bg-white border-2 border-blue-50 text-[#002366] px-10 py-5 rounded-2xl font-semibold hover:border-blue-200 hover:bg-blue-50/30 transition-all duration-300"
               >
                 Explore Programs

@@ -155,17 +155,11 @@ export default function InstituteOverview() {
                   Affiliations
                 </p>
                 <p className="text-xs font-semibold text-[#002366]">
-                  RGUHS • INC • KNC
+                  RGUHS •  KNC • INC*
                 </p>
               </div>
 
-              <button className="flex items-center gap-2 text-blue-600 font-bold text-sm group">
-                Learn More
-                <ArrowRight
-                  size={16}
-                  className="group-hover:translate-x-1 transition-transform"
-                />
-              </button>
+              
             </div>
 
           </div>

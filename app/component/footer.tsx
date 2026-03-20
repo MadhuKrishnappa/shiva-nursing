@@ -96,16 +96,16 @@ export default function Footer() {
               </h4>
 
               <div className="flex flex-col gap-3 text-sm text-slate-300">
-                <Link href="#" className="hover:text-white transition">
+                <Link href="/#about" className="hover:text-white transition">
                   About Institute
                 </Link>
-                <Link href="#" className="hover:text-white transition">
+                <Link href="/#courses" className="hover:text-white transition">
                   Courses
                 </Link>
-                <Link href="#" className="hover:text-white transition">
+                <Link href="/#admission" className="hover:text-white transition">
                   Admissions
                 </Link>
-                <Link href="#" className="hover:text-white transition">
+                <Link href="/#contact" className="hover:text-white transition">
                   Contact
                 </Link>
               </div>
