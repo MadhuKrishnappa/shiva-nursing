@@ -28,7 +28,7 @@ export default function Home() {
         <CourseHighlights />
       </section>
 
-      {/* Admission CTA */}
+       {/* Admission CTA */}
       <section id="admission">
         <AdmissionCTA />
       </section>

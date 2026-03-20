@@ -1,119 +1,144 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Stethoscope, Hospital, GraduationCap, Users } from "lucide-react";
+import {
+  Stethoscope,
+  Hospital,
+  GraduationCap,
+  Users,
+  CheckCircle2,
+} from "lucide-react";
 
 export default function WhyChooseUs() {
   const points = [
     {
-      title: "Modern Nursing Skill Laboratories",
+      title: "Advanced Skill Labs",
+      desc: "High-fidelity simulation environments for precision training.",
       icon: Stethoscope,
-      description:
-        "Advanced simulation labs replicating real clinical environments to build confidence, precision, and clinical decision-making skills."
     },
     {
-      title: "Multi-Speciality Hospital Exposure",
+      title: "Clinical Immersion",
+      desc: "Rotations in multi-speciality hospitals for real exposure.",
       icon: Hospital,
-      description:
-        "Structured clinical postings across departments providing immersive real-world healthcare training experiences."
     },
     {
-      title: "Experienced & Qualified Faculty",
+      title: "Expert Mentorship",
+      desc: "Guidance from senior clinicians & academic leaders.",
       icon: GraduationCap,
-      description:
-        "Academic mentors with strong educational backgrounds and extensive clinical expertise guiding every stage of learning."
     },
     {
-      title: "Student-Centered Learning Culture",
+      title: "Growth Culture",
+      desc: "Leadership-focused ecosystem with ethical grounding.",
       icon: Users,
-      description:
-        "A nurturing and professional environment designed to support leadership, growth, and lifelong learning."
     },
   ];
 
   return (
-    <section className="relative py-36 px-6 bg-gradient-to-b from-white via-[#F6F9FF] to-white overflow-hidden">
+    <section className="relative py-24 md:py-32 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6">
 
-      {/* Ambient Background Glow */}
-      <div className="absolute -top-40 left-0 w-[500px] h-[500px] bg-[#0B2C6B]/10 rounded-full blur-[140px]" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#D4AF37]/10 rounded-full blur-[140px]" />
+        {/* 🔷 MAIN GRID */}
+        <div className="grid lg:grid-cols-12 gap-10">
 
-      <div className="relative max-w-7xl mx-auto">
+          {/* 🔹 LEFT: STICKY CONTENT */}
+          <div className="lg:col-span-5">
+            <div className="lg:sticky top-32 space-y-6">
 
-        {/* ===== Header ===== */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center max-w-4xl mx-auto"
-        >
-          <span className="text-sm tracking-[0.4em] text-[#D4AF37] font-semibold uppercase">
-            Why Choose Us
-          </span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100">
+                <span className="w-2 h-2 bg-blue-600 rounded-full animate-pulse" />
+                <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">
+                  Why Choose Us
+                </span>
+              </div>
 
-          <h2 className="mt-8 text-4xl md:text-6xl font-bold text-[#0B2C6B] leading-tight">
-            Excellence Built on <span className="text-[#D4AF37]">Modern Foundations</span>
-          </h2>
+              <h2 className="text-4xl md:text-6xl font-serif text-[#002366] leading-[1.05]">
+                Built for <br />
+                <span className="italic font-light text-blue-500">
+                  Real-World Nursing
+                </span>
+              </h2>
 
-          <p className="mt-8 text-lg md:text-xl text-gray-600 leading-relaxed">
-            As a newly established nursing institution in Mysuru, we are designed
-            from the ground up to deliver advanced healthcare education aligned
-            with global standards and clinical excellence.
-          </p>
+              <p className="text-lg text-slate-500 leading-relaxed max-w-md">
+                Our approach blends simulation, clinical immersion, and
+                mentorship to prepare students for global healthcare demands.
+              </p>
 
-          <div className="w-28 h-[3px] bg-gradient-to-r from-[#D4AF37] to-[#0B2C6B] mx-auto mt-10 rounded-full" />
-        </motion.div>
-
-        {/* ===== Feature Grid ===== */}
-        <div className="mt-24 grid md:grid-cols-2 gap-10">
-
-          {points.map((item, i) => {
-            const Icon = item.icon;
-
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: i * 0.1 }}
-                viewport={{ once: true }}
-                className="relative bg-white/70 backdrop-blur-xl border border-white/40 rounded-3xl p-10 shadow-xl hover:shadow-2xl transition duration-500 group"
-              >
-                {/* Decorative Gold Accent */}
-                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#D4AF37] to-transparent rounded-t-3xl" />
-
-                {/* Icon */}
-                <div className="w-14 h-14 rounded-2xl bg-[#0B2C6B]/10 flex items-center justify-center mb-8 group-hover:bg-[#D4AF37] transition duration-500">
-                  <Icon className="w-6 h-6 text-[#0B2C6B] group-hover:text-white transition duration-500" />
+              {/* Trust bullets */}
+              <div className="flex flex-col gap-3 pt-4">
+                <div className="flex items-center gap-2 text-sm font-semibold text-[#002366]">
+                  <CheckCircle2 size={16} className="text-blue-500" />
+                  INC & KNC Approved
                 </div>
+                <div className="flex items-center gap-2 text-sm font-semibold text-[#002366]">
+                  <CheckCircle2 size={16} className="text-blue-500" />
+                  RGUHS Affiliated
+                </div>
+              </div>
 
-                <h3 className="text-2xl font-semibold text-[#0B2C6B]">
-                  {item.title}
-                </h3>
+            </div>
+          </div>
 
-                <p className="mt-6 text-gray-600 leading-relaxed">
-                  {item.description}
-                </p>
-              </motion.div>
-            );
-          })}
+          {/* 🔹 RIGHT: STACKED FEATURE CARDS */}
+          <div className="lg:col-span-7 flex flex-col gap-6">
+
+            {points.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="group flex gap-6 items-start p-8 rounded-[2.5rem] bg-slate-50/60 border border-slate-100 hover:bg-white hover:shadow-[0_25px_60px_-15px_rgba(0,35,102,0.08)] transition-all duration-500"
+                >
+                  {/* Icon */}
+                  <div className="w-14 h-14 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-[#002366] group-hover:bg-[#002366] group-hover:text-white transition-all duration-500 shrink-0">
+                    <Icon size={24} strokeWidth={1.5} />
+                  </div>
+
+                  {/* Content */}
+                  <div>
+                    <h3 className="text-xl font-bold text-[#002366] mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-slate-500 text-sm leading-relaxed max-w-md">
+                      {item.desc}
+                    </p>
+                  </div>
+
+                  {/* Subtle index */}
+                  <div className="ml-auto text-[10px] font-bold text-slate-300 group-hover:text-blue-400 transition">
+                    0{i + 1}
+                  </div>
+                </motion.div>
+              );
+            })}
+
+          </div>
         </div>
 
-        {/* ===== Bottom Institutional Statement ===== */}
+        {/* 🔷 PREMIUM CTA STRIP */}
         <motion.div
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9 }}
           viewport={{ once: true }}
-          className="mt-24 text-center max-w-3xl mx-auto"
+          className="mt-24 relative overflow-hidden rounded-[3rem] bg-[#002366] text-white p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-10"
         >
-          <p className="text-lg text-gray-600 leading-relaxed">
-            Our institution represents a forward-thinking approach to nursing
-            education — combining modern infrastructure, structured mentorship,
-            and ethical healthcare training to shape confident professionals
-            ready to serve communities.
-          </p>
+          {/* Glow */}
+          <div className="absolute top-0 right-0 w-72 h-72 bg-blue-500/10 blur-[100px]" />
+
+          <div className="relative z-10 max-w-xl">
+            <h4 className="text-2xl md:text-3xl font-serif mb-4">
+              Step into the Future of Nursing
+            </h4>
+            <p className="text-blue-100/70 text-sm">
+              Join a new generation of nurses trained with global standards,
+              ethical grounding, and clinical excellence.
+            </p>
+          </div>
+
+          
         </motion.div>
 
       </div>

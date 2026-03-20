@@ -2,87 +2,85 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function AdmissionCTA() {
   return (
-    <section className="relative py-36 px-6 overflow-hidden bg-[#0A1F4D] text-white">
+    <section className="relative py-24 md:py-32 px-6 bg-[#020817] overflow-hidden">
 
-      {/* Deep Royal Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A1F4D] via-[#0E2C6B] to-[#061635]" />
+      {/* 🌌 BACKGROUND GLOW */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-600/20 blur-[140px] rounded-full" />
 
-      {/* Golden Ambient Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#D4AF37]/10 rounded-full blur-[120px]" />
+      {/* 🧊 GLASS CONTAINER */}
+      <div className="relative z-10 max-w-5xl mx-auto">
+        <div className="backdrop-blur-2xl bg-white/5 border border-white/10 rounded-[3rem] p-10 md:p-16 text-center shadow-[0_30px_80px_rgba(0,0,0,0.4)]">
 
-      <div className="relative max-w-4xl mx-auto text-center">
-
-        {/* Top Decorative Line */}
-        <div className="flex items-center justify-center mb-10">
-          <div className="h-[2px] w-20 bg-[#D4AF37]" />
-          <div className="mx-4 w-3 h-3 rotate-45 bg-[#D4AF37]" />
-          <div className="h-[2px] w-20 bg-[#D4AF37]" />
-        </div>
-
-        {/* Royal Label */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-sm tracking-[0.5em] uppercase text-[#D4AF37] font-semibold"
-        >
-          Admissions Open 2026 – 27
-        </motion.p>
-
-        {/* Main Royal Heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mt-8 text-4xl md:text-5xl lg:text-6xl font-serif font-semibold leading-tight"
-        >
-          Step Into a Legacy of
-          <span className="block text-[#D4AF37] mt-2">
-            Excellence in Nursing Education
-          </span>
-        </motion.h2>
-
-        {/* Subtext */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          className="mt-8 text-lg text-gray-300 leading-relaxed"
-        >
-          Begin your professional journey in Mysuru with an institution
-          inspired by tradition, guided by excellence, and committed to
-          shaping compassionate healthcare leaders.
-        </motion.p>
-
-        {/* Royal CTA Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          className="mt-14"
-        >
-          <Link
-            href="/#contact"
-            className="inline-block px-12 py-4 border-2 border-[#D4AF37] text-[#D4AF37] font-semibold tracking-widest uppercase transition-all duration-500 hover:bg-[#D4AF37] hover:text-[#0A1F4D] hover:shadow-[0_0_30px_rgba(212,175,55,0.4)]"
+          {/* 🔹 BADGE */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8"
           >
-            Enquire Now
-          </Link>
-        </motion.div>
+            <span className="h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
+            <span className="text-[10px] uppercase tracking-[0.3em] text-blue-100/80 font-bold">
+              Admissions Open 2026–27
+            </span>
+          </motion.div>
 
-        {/* Bottom Decorative Line */}
-        <div className="flex items-center justify-center mt-14">
-          <div className="h-[2px] w-20 bg-[#D4AF37]" />
-          <div className="mx-4 w-3 h-3 rotate-45 bg-[#D4AF37]" />
-          <div className="h-[2px] w-20 bg-[#D4AF37]" />
+          {/* 🔹 HEADING */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-3xl md:text-5xl font-serif text-white leading-[1.2] mb-6"
+          >
+            Begin Your Journey in <br />
+            <span className="italic font-light text-blue-400">
+              Compassionate Healthcare
+            </span>
+          </motion.h2>
+
+          {/* 🔹 SUBTEXT */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="max-w-xl mx-auto text-sm md:text-base text-blue-100/60 mb-10 leading-relaxed"
+          >
+            Step into a learning environment where clinical expertise meets human compassion. 
+            Build a future where your skills truly make a difference.
+          </motion.p>
+
+          {/* 🔹 CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <Link
+              href="/#contact"
+              className="flex items-center gap-2 px-8 py-4 bg-blue-500 text-white rounded-2xl font-semibold hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/20"
+            >
+              Begin Application
+              <ArrowRight size={18} />
+            </Link>
+
+            <Link
+              href="/#courses"
+              className="flex items-center gap-2 px-6 py-4 text-blue-100/70 hover:text-white transition"
+            >
+              <Sparkles size={16} />
+              View Programs
+            </Link>
+          </motion.div>
+
+          {/* 🔹 TRUST */}
+          <div className="mt-10 pt-6 border-t border-white/10 flex flex-wrap justify-center gap-6 text-[10px] uppercase tracking-widest text-white/30">
+            <span>INC Recognized</span>
+            <span>RGUHS Affiliated</span>
+            <span>KNC Approved</span>
+          </div>
+
         </div>
-
       </div>
     </section>
   );

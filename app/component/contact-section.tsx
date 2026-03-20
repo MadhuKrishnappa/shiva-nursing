@@ -1,162 +1,96 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Clock, Building } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Building, Send } from "lucide-react";
 
 export default function ContactSection() {
   const contactItems = [
-    {
-      icon: MapPin,
-      title: "Campus Address",
-      content: "#45, 8th Cross, Vidyanagar, Mysuru – 570029",
-    },
-    {
-      icon: Phone,
-      title: "Admissions Helpline",
-      content: "+91 97399 48632  |  +91 97430 67989",
-    },
-    {
-      icon: Mail,
-      title: "Official Email",
-      content: "Shivacollegeofnursing@gmail.com",
-    },
-    {
-      icon: Building,
-      title: "Managed By",
-      content: "Thirumala Educational Trust",
-    },
-    {
-      icon: Clock,
-      title: "Office Timings",
-      content: "Monday – Saturday | 9:00 AM – 5:00 PM",
-    },
+    { icon: MapPin, title: "Campus", content: "#45, 8th Cross, Vidyanagar, Mysuru – 570029" },
+    { icon: Phone, title: "Admissions", content: "+91 97399 48632", subContent: "+91 97430 67989" },
+    { icon: Mail, title: "Email", content: "Shivacollegeofnursing@gmail.com" },
+    { icon: Building, title: "Governance", content: "Thirumala Educational Trust" },
   ];
 
   return (
-    <section className="relative py-28 px-6 bg-white overflow-hidden">
+    <section className="relative py-24 md:py-32 bg-[#FBFDFF] overflow-hidden">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50/50 blur-[120px] rounded-full pointer-events-none" />
 
-      {/* Subtle Gold Top Border */}
-      <div className="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-12 gap-16 items-start">
 
-      {/* Soft Ambient Glow */}
-      <div className="absolute -top-32 left-0 w-[500px] h-[500px] bg-[#D4AF37]/5 rounded-full blur-[140px]" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#0B2C6B]/5 rounded-full blur-[140px]" />
+          {/* --- LEFT SIDE: DIRECTORY --- */}
+          <div className="lg:col-span-5 space-y-12">
+            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 mb-6">
+                <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
+                <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">Contact Hub</span>
+              </div>
+              <h2 className="text-4xl md:text-6xl font-serif text-[#002366] leading-[1.1] tracking-tight mb-6">
+                Connect with our <br />
+                <span className="italic font-light text-blue-500">Admissions Office.</span>
+              </h2>
+            </motion.div>
 
-      <div className="relative max-w-7xl mx-auto">
-
-        {/* ================= HEADER ================= */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto"
-        >
-          
-
-          <span className="uppercase tracking-[0.4em] text-sm text-[#D4AF37] font-semibold">
-            Admissions & Enquiries
-          </span>
-
-          <h2 className="mt-6 text-3xl md:text-5xl font-semibold text-[#0B2C6B] leading-tight">
-            Connect With Our <span className="text-[#D4AF37]">Admissions Office</span>
-          </h2>
-
-          <div className="flex justify-center items-center gap-6 mt-8">
-            <div className="w-16 h-[1px] bg-[#D4AF37]" />
-            <div className="w-3 h-3 bg-[#D4AF37] rounded-full" />
-            <div className="w-16 h-[1px] bg-[#D4AF37]" />
-          </div>
-        </motion.div>
-
-        {/* ================= MAIN GRID ================= */}
-        <div className="mt-20 grid lg:grid-cols-2 gap-16">
-
-          {/* ================= LEFT SIDE ================= */}
-          <div className="space-y-8">
-
-            {contactItems.map((item, i) => {
-              const Icon = item.icon;
-
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-white border border-[#D4AF37]/30 rounded-2xl p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left shadow-md hover:shadow-xl transition duration-500"
-                >
-                  <div className="w-14 h-14 flex items-center justify-center rounded-full border border-[#D4AF37] bg-[#D4AF37]/10">
-                    <Icon className="w-6 h-6 text-[#0B2C6B]" />
+            <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-6">
+              {contactItems.map((item, i) => (
+                <div key={i} className="group flex gap-5 p-4 rounded-2xl transition-colors hover:bg-white hover:shadow-sm">
+                  <div className="shrink-0 w-12 h-12 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-[#002366] shadow-sm group-hover:bg-[#002366] group-hover:text-white transition-all duration-300">
+                    <item.icon size={20} />
                   </div>
-
                   <div>
-                    <h3 className="text-lg font-semibold text-[#0B2C6B]">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-gray-600 text-sm leading-relaxed">
-                      {item.content}
-                    </p>
+                    <h3 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{item.title}</h3>
+                    <p className="text-[#002366] font-medium leading-snug">{item.content}</p>
+                    {item.subContent && <p className="text-[#002366] font-medium mt-1">{item.subContent}</p>}
                   </div>
-                </motion.div>
-              );
-            })}
-
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* ================= RIGHT SIDE FORM ================= */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9 }}
-            viewport={{ once: true }}
-            className="bg-white border border-[#D4AF37]/40 rounded-3xl p-8 md:p-12 shadow-xl"
-          >
-            <h3 className="text-2xl md:text-3xl font-semibold text-[#0B2C6B]">
-              Enquiry Form
-            </h3>
+          {/* --- RIGHT SIDE: ACTION CARD & MAP --- */}
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="lg:col-span-7">
+            <div className="bg-white border border-slate-100 rounded-[2.5rem] p-4 md:p-6 shadow-[0_20px_50px_rgba(0,35,102,0.04)]">
 
-            <p className="mt-3 text-gray-600 text-sm">
-              Submit your details and our admissions office will respond promptly.
-            </p>
+              {/* Responsive Map Embed */}
+              <div className="relative w-full h-64 md:h-80 rounded-[2rem] overflow-hidden mb-8 border border-slate-100 shadow-inner bg-slate-100">
+                <iframe
+                  src="https://www.google.com/maps?q=Shiva+College+of+Nursing+Mysuru&z=17&output=embed"
+                  className="absolute inset-0 w-full h-full"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  title="Shiva College of Nursing Location Pin"
+                />
+              </div>
 
-            <form className="mt-8 space-y-5">
+              <div className="px-4 pb-4">
+                <div className="flex justify-between items-start mb-10">
+                  <div>
+                    <h3 className="text-2xl font-bold text-[#002366]">Digital Enquiry</h3>
+                    <p className="text-slate-400 text-sm mt-1">Expected response: Under 24 hours</p>
+                  </div>
+                  <div className="hidden sm:block text-right">
+                    <div className="flex items-center gap-2 text-[#002366]/40 font-bold text-[10px] uppercase tracking-widest">
+                      <Clock size={12} /> Office Timings
+                    </div>
+                    <p className="text-[11px] text-slate-500 mt-1">Mon – Sat | 9:00 AM – 5:00 PM</p>
+                  </div>
+                </div>
 
-              <input
-                type="text"
-                placeholder="Full Name"
-                className="w-full px-5 py-4 rounded-xl border border-gray-200 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37]"
-              />
-
-              <input
-                type="email"
-                placeholder="Email Address"
-                className="w-full px-5 py-4 rounded-xl border border-gray-200 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37]"
-              />
-
-              <input
-                type="tel"
-                placeholder="Phone Number"
-                className="w-full px-5 py-4 rounded-xl border border-gray-200 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37]"
-              />
-
-              <textarea
-                rows={4}
-                placeholder="Your Message"
-                className="w-full px-5 py-4 rounded-xl border border-gray-200 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37]"
-              />
-
-              <button
-                type="submit"
-                className="w-full py-4 rounded-full bg-[#0B2C6B] text-white uppercase tracking-[0.2em] text-sm hover:bg-[#D4AF37] hover:text-[#0B2C6B] transition duration-500"
-              >
-                Submit Enquiry
-              </button>
-
-            </form>
+                <form className="space-y-4">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <input type="text" placeholder="Full Name" className="w-full px-5 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-500/20 text-sm outline-none" />
+                    <input type="tel" placeholder="Phone" className="w-full px-5 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-500/20 text-sm outline-none" />
+                  </div>
+                  <input type="email" placeholder="Email" className="w-full px-5 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-500/20 text-sm outline-none" />
+                  <textarea rows={3} placeholder="How can we help you?" className="w-full px-5 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-500/20 text-sm outline-none resize-none" />
+                  <button className="w-full mt-4 flex items-center justify-center gap-3 py-5 bg-[#002366] text-white rounded-2xl font-bold text-xs uppercase tracking-[0.2em] hover:bg-blue-600 transition-all">
+                    Submit Enquiry <Send size={16} />
+                  </button>
+                </form>
+              </div>
+            </div>
           </motion.div>
-
         </div>
       </div>
     </section>

@@ -4,7 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, X, Phone, Mail } from "lucide-react";
+import { Menu, X, Phone, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -15,14 +16,13 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 20);
       setActiveHash(window.location.hash);
     };
 
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("hashchange", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("hashchange", handleScroll);
@@ -35,7 +35,6 @@ export default function Navbar() {
     { name: "Why Us", href: "/#why" },
     { name: "Courses", href: "/#courses" },
     { name: "Admissions", href: "/#admission" },
-    { name: "Contact", href: "/#contact" },
   ];
 
   const handleNavClick = (href: string) => {
@@ -44,139 +43,119 @@ export default function Navbar() {
   };
 
   return (
-    <>
-      {/* ================= TOP ROYAL STRIP ================= */}
-      <div className="w-full bg-[#03122B] text-[#D4AF37] text-xs md:text-sm border-b border-[#D4AF37]/30">
-        <div className="max-w-8xl mx-auto px-6 py-2 flex justify-between items-center tracking-[0.15em] uppercase">
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <Phone size={14} />
-              <span>+91 97399 48632</span>
-            </div>
-            <div className="hidden sm:flex items-center gap-2">
-              <Mail size={14} />
-              <span>Shivacollegeofnursing@gmail.com</span>
-            </div>
+    <header className="fixed top-0 w-full z-[100] transition-all duration-300 px-4 md:px-8 py-4">
+      {/* SaaS Style Floating Container */}
+      <nav
+        className={`
+          mx-auto max-w-7xl transition-all duration-500 ease-in-out
+          ${scrolled 
+            ? "bg-white/80 backdrop-blur-md shadow-[0_8px_32px_rgba(0,35,102,0.1)] border border-white/20 py-2 px-6 rounded-full" 
+            : "bg-transparent py-4 px-2 rounded-2xl"}
+          flex items-center justify-between
+        `}
+      >
+        {/* LOGO SECTION */}
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="relative">
+            <Image
+              src="/logo.png"
+              alt="Logo"
+              width={scrolled ? 40 : 50}
+              height={scrolled ? 40 : 50}
+              priority
+              className="object-contain transition-all duration-500 group-hover:scale-110"
+            />
           </div>
-          <span className="hidden md:block text-[11px]">
-            Under Thirumala Educational Trust
-          </span>
-        </div>
-      </div>
+          <div className="flex flex-col">
+            <span className={`font-serif font-bold tracking-tight transition-all duration-500 ${scrolled ? 'text-lg' : 'text-xl'} text-[#002366]`}>
+              SHIVA <span className="text-blue-500">NURSING</span>
+            </span>
+            {!scrolled && (
+              <span className="text-[10px] uppercase tracking-[0.3em] text-gray-500 font-medium">
+                Mysuru Campus
+              </span>
+            )}
+          </div>
+        </Link>
 
-      {/* ================= MAIN NAV ================= */}
-      <header className="sticky top-0 z-50">
-        <div
-          className={`
-            transition-all duration-500
-            ${
-              scrolled
-                ? "bg-white shadow-xl border-b border-[#D4AF37]/30"
-                : "bg-white"
-            }
-          `}
-        >
-          <div
-            className={`
-               mx-auto px-4 flex justify-between items-center transition-all duration-500
-              ${scrolled ? "py-3" : "py-5"}
-            `}
-          >
-            {/* ================= LOGO ================= */}
-            <Link href="/" className="flex items-center gap-4">
-              <Image
-                src="/logo.png"
-                alt="Shiva College of Nursing Logo"
-                width={scrolled ? 55 : 80}
-                height={scrolled ? 55 : 80}
-                priority
-                className="object-contain transition-all duration-500"
-              />
-
-              <div className="h-14 w-0.5 bg-[#D4AF37]/50" />
-
-              <div className="leading-tight">
-                <span className="block text-[#D4AF37] text-xl md:text-2xl font-semibold tracking-[0.08em]">
-                  SHIVA COLLEGE
-                </span>
-                <span className="block text-[#03122B] text-xs md:text-sm tracking-[0.35em] uppercase">
-                  of Nursing
-                </span>
-              </div>
-            </Link>
-
-            {/* ================= DESKTOP NAV ================= */}
-            <nav className="hidden md:flex items-center gap-10">
-              {navLinks.map((link) => {
-                const linkHash = link.href.split("#")[1];
-                const isActive =
-                  pathname === "/" && activeHash === `#${linkHash}`;
-
-                return (
-                  <button
-                    key={link.name}
-                    onClick={() => handleNavClick(link.href)}
-                    className="relative text-sm uppercase tracking-[0.18em] text-[#03122B] hover:text-[#D4AF37] transition duration-300"
-                  >
-                    {link.name}
-
-                    <span
-                      className={`
-                        absolute left-0 -bottom-2 h-[2px] bg-[#D4AF37] transition-all duration-300
-                        ${
-                          isActive
-                            ? "w-full"
-                            : "w-0 group-hover:w-full"
-                        }
-                      `}
-                    />
-                  </button>
-                );
-              })}
-
-              {/* Royal Apply Button */}
+        {/* CENTER NAV: SaaS CLEAN LINKS */}
+        <div className="hidden md:flex items-center bg-gray-100/50 p-1 rounded-full border border-gray-200/50">
+          {navLinks.map((link) => {
+            const isActive = activeHash === link.href.split("/")[1];
+            return (
               <button
-                onClick={() => handleNavClick("/#contact")}
-                className="ml-6 px-7 py-2 border border-[#D4AF37] text-[#D4AF37] uppercase text-sm tracking-[0.2em] rounded-full transition-all duration-300 hover:bg-[#D4AF37] hover:text-[#03122B]"
+                key={link.name}
+                onClick={() => handleNavClick(link.href)}
+                className={`
+                  px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300
+                  ${isActive 
+                    ? "bg-white text-[#002366] shadow-sm" 
+                    : "text-gray-500 hover:text-[#002366]"}
+                `}
               >
-                Apply Now
+                {link.name}
               </button>
-            </nav>
-
-            {/* ================= MOBILE TOGGLE ================= */}
-            <button
-              className="md:hidden text-[#D4AF37]"
-              onClick={() => setOpen(!open)}
-            >
-              {open ? <X size={28} /> : <Menu size={28} />}
-            </button>
-          </div>
-
-          {/* ================= MOBILE DRAWER ================= */}
-          {open && (
-            <div className="md:hidden bg-white border-t border-[#D4AF37]/30">
-              <div className="px-8 py-10 space-y-6 text-center">
-                {navLinks.map((link) => (
-                  <button
-                    key={link.name}
-                    onClick={() => handleNavClick(link.href)}
-                    className="block w-full text-[#03122B] uppercase tracking-[0.2em] text-sm hover:text-[#D4AF37] transition"
-                  >
-                    {link.name}
-                  </button>
-                ))}
-
-                <button
-                  onClick={() => handleNavClick("/#contact")}
-                  className="block w-full mt-6 border border-[#D4AF37] text-[#D4AF37] py-3 rounded-full uppercase tracking-[0.2em] text-sm hover:bg-[#D4AF37] hover:text-[#03122B] transition"
-                >
-                  Apply Now
-                </button>
-              </div>
-            </div>
-          )}
+            );
+          })}
         </div>
-      </header>
-    </>
+
+        {/* RIGHT SIDE ACTIONS */}
+        <div className="flex items-center gap-3">
+          <a 
+            href="tel:+919739948632" 
+            className="hidden lg:flex items-center gap-2 text-[#002366] font-bold text-xs mr-4 hover:opacity-70 transition"
+          >
+            <div className="p-2 bg-blue-50 rounded-full">
+              <Phone size={14} className="text-blue-600" />
+            </div>
+            <span>+91 9739948632</span>
+          </a>
+
+          <button
+            onClick={() => handleNavClick("/#contact")}
+            className="hidden sm:flex items-center gap-2 bg-[#002366] text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-900/20 transition-all duration-300"
+          >
+            Apply Now <ArrowRight size={14} />
+          </button>
+
+          {/* MOBILE MENU TOGGLE */}
+          <button
+            className="md:hidden p-2 text-[#002366] hover:bg-gray-100 rounded-full transition"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* MOBILE FULL-SCREEN MENU */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="absolute top-24 left-4 right-4 bg-white rounded-[2rem] shadow-2xl border border-gray-100 p-8 md:hidden flex flex-col gap-6 items-center"
+          >
+            {navLinks.map((link) => (
+              <button
+                key={link.name}
+                onClick={() => handleNavClick(link.href)}
+                className="text-[#002366] font-serif text-2xl font-medium"
+              >
+                {link.name}
+              </button>
+            ))}
+            <hr className="w-full border-gray-100" />
+            <button
+              onClick={() => handleNavClick("/#contact")}
+              className="w-full bg-[#002366] text-white py-4 rounded-2xl font-bold uppercase tracking-widest"
+            >
+              Apply Now
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 }

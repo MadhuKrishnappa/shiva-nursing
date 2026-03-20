@@ -1,107 +1,122 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Clock, GraduationCap, CalendarCheck, ShieldCheck } from "lucide-react";
+import {
+  Clock,
+  GraduationCap,
+  CalendarCheck,
+  ShieldCheck,
+  CheckCircle2,
+} from "lucide-react";
 
 export default function CourseHighlights() {
   const highlights = [
     {
       title: "Duration",
       value: "4 Years",
+      sub: "Full-time",
       icon: Clock,
     },
     {
       title: "Eligibility",
-      value: "10+2 with PCB",
+      value: "10+2 PCB",
+      sub: "45% Min",
       icon: GraduationCap,
     },
     {
-      title: "Minimum Age",
+      title: "Min Age",
       value: "17 Years",
+      sub: "As per norms",
       icon: CalendarCheck,
     },
     {
       title: "Recognition",
-      value: "As per Karnataka Norms",
+      value: "KNC & INC*",
+      sub: "Approved",
       icon: ShieldCheck,
     },
   ];
 
   return (
-    <section className="relative py-36 px-6 bg-[#F8FAFF] overflow-hidden">
+    <section className="relative py-20 md:py-28 bg-[#F4F7FA]">
+      <div className="max-w-6xl mx-auto px-6">
 
-      {/* Soft Royal Glow */}
-      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#D4AF37]/10 rounded-full blur-[120px]" />
+        {/* 🧊 SINGLE CONTAINER */}
+        <div className="bg-white rounded-[2.5rem] border border-slate-100 shadow-[0_20px_60px_rgba(0,35,102,0.06)] p-8 md:p-12">
 
-      <div className="relative max-w-6xl mx-auto text-center">
+          {/* 🔹 HEADER */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <CheckCircle2 size={14} className="text-blue-600" />
+                <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-blue-600">
+                  Course Overview
+                </span>
+              </div>
 
-        {/* Decorative Top Frame */}
-        <div className="flex items-center justify-center mb-12">
-          <div className="h-[2px] w-24 bg-[#D4AF37]" />
-          <div className="mx-4 w-3 h-3 rotate-45 bg-[#D4AF37]" />
-          <div className="h-[2px] w-24 bg-[#D4AF37]" />
-        </div>
+              <h2 className="text-2xl md:text-4xl font-serif text-[#002366] leading-tight">
+                B.Sc. <span className="italic font-light text-blue-500">Nursing</span>
+              </h2>
+            </div>
 
-        {/* Section Label */}
-        <span className="text-sm tracking-[0.45em] text-[#D4AF37] font-semibold uppercase">
-          Course Highlights
-        </span>
+            <p className="text-sm text-slate-500 max-w-sm">
+              A structured 4-year program focused on clinical excellence,
+              patient care, and real-world healthcare exposure.
+            </p>
+          </div>
 
-        {/* Title */}
-        <h2 className="mt-6 text-4xl md:text-5xl font-serif font-semibold text-[#0B2C6B]">
-          Bachelor of Science in Nursing
-        </h2>
-
-        {/* Description */}
-        <p className="mt-8 text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          A four-year professional undergraduate program structured to
-          develop academic excellence, clinical competence, and ethical
-          leadership in nursing practice.
-        </p>
-
-        {/* Royal Content Panel */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mt-20 border-2 border-[#D4AF37]/40 rounded-2xl bg-white shadow-xl"
-        >
-          <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[#D4AF37]/20">
+          {/* 🔹 COMPACT GRID */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
 
             {highlights.map((item, i) => {
               const Icon = item.icon;
 
               return (
-                <div
+                <motion.div
                   key={i}
-                  className="p-12 text-center group transition-all duration-500 hover:bg-[#FDF9ED]"
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.08 }}
+                  viewport={{ once: true }}
+                  className="group p-5 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all duration-300"
                 >
-                  <div className="w-16 h-16 mx-auto rounded-full border-2 border-[#D4AF37] flex items-center justify-center mb-6 group-hover:bg-[#D4AF37] transition duration-500">
-                    <Icon className="w-7 h-7 text-[#0B2C6B] group-hover:text-white transition duration-500" />
+                  <div className="flex items-center justify-between mb-4">
+                    <Icon
+                      size={20}
+                      className="text-[#002366] group-hover:text-blue-500 transition"
+                    />
+                    <span className="text-[9px] uppercase tracking-widest text-slate-400 font-bold">
+                      {item.title}
+                    </span>
                   </div>
 
-                  <p className="text-xs uppercase tracking-[0.3em] text-gray-500">
-                    {item.title}
-                  </p>
-
-                  <h3 className="mt-4 text-3xl font-bold text-[#0B2C6B]">
+                  <h3 className="text-lg md:text-xl font-bold text-[#002366] leading-tight">
                     {item.value}
                   </h3>
-                </div>
+
+                  <p className="text-[11px] text-slate-400 mt-1">
+                    {item.sub}
+                  </p>
+                </motion.div>
               );
             })}
-
           </div>
-        </motion.div>
 
-        {/* Decorative Bottom Frame */}
-        <div className="flex items-center justify-center mt-16">
-          <div className="h-[2px] w-24 bg-[#D4AF37]" />
-          <div className="mx-4 w-3 h-3 rotate-45 bg-[#D4AF37]" />
-          <div className="h-[2px] w-24 bg-[#D4AF37]" />
+          {/* 🔹 TRUST ROW */}
+          <div className="mt-10 pt-6 border-t border-slate-100 flex flex-wrap justify-between items-center gap-4 text-xs">
+
+            <div className="flex flex-wrap gap-4 text-slate-400 font-medium">
+              <span>RGUHS Affiliated</span>
+              <span>INC Approved</span>
+              <span>KNC Recognized</span>
+            </div>
+
+            <div className="text-[#002366] font-semibold text-xs">
+              Admissions Open 2026
+            </div>
+          </div>
+
         </div>
-
       </div>
     </section>
   );

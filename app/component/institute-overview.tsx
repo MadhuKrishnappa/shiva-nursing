@@ -1,186 +1,173 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { GraduationCap, Stethoscope, Landmark, ShieldCheck } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  GraduationCap,
+  Stethoscope,
+  ShieldCheck,
+  ArrowRight,
+  Target,
+  Eye,
+} from "lucide-react";
 
 export default function InstituteOverview() {
-  const containerRef = useRef(null);
-
-  const features = [
+  const pillars = [
     {
       title: "Modern Infrastructure",
-      desc: "State-of-the-art simulation labs & digitally enabled classrooms.",
-      icon: <GraduationCap className="w-6 h-6" />,
-      color: "bg-blue-50 text-blue-600"
+      desc: "State-of-the-art labs & digital classrooms for immersive learning.",
+      icon: <GraduationCap size={22} />,
     },
     {
-      title: "Academic Leadership",
-      desc: "Experienced faculty guiding the next generation of nurses.",
-      icon: <ShieldCheck className="w-6 h-6" />,
-      color: "bg-amber-50 text-amber-600"
+      title: "Clinical Excellence",
+      desc: "Hospital exposure ensuring real-world readiness.",
+      icon: <Stethoscope size={22} />,
     },
     {
-      title: "Clinical Partnerships",
-      desc: "Structured hospital affiliations ensuring real-world readiness.",
-      icon: <Stethoscope className="w-6 h-6" />,
-      color: "bg-emerald-50 text-emerald-600"
-    }
+      title: "Global Leadership",
+      desc: "Faculty shaping globally competent nurses.",
+      icon: <ShieldCheck size={22} />,
+    },
   ];
 
   return (
-    <section ref={containerRef} className="relative py-24 md:py-32 px-6 bg-[#FCFDFF] overflow-hidden">
-      {/* Decorative Background Elements */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-100/40 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-amber-100/30 blur-[120px] rounded-full" />
-      </div>
+    <section className="relative py-24 md:py-32 bg-[#FBFDFF] overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6">
 
-      <div className="relative max-w-7xl mx-auto">
-        {/* --- Header Section --- */}
-        <div className="grid lg:grid-cols-12 gap-12 items-end mb-20">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-8"
-          >
-            <span className="inline-block px-4 py-1.5 mb-6 text-[11px] font-bold tracking-[0.2em] text-amber-700 bg-amber-50 rounded-full uppercase border border-amber-100">
-              New Era of Nursing
-            </span>
-            <h2 className="text-4xl md:text-7xl font-light tracking-tight text-slate-900 leading-[1.1]">
-              Building the Future of <br />
-              <span className="font-serif italic text-blue-900">Nursing Excellence</span>
+        {/* 🔷 HEADER */}
+        <div className="grid lg:grid-cols-12 gap-10 items-end mb-20">
+          <div className="lg:col-span-7">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="w-10 h-[2px] bg-blue-500" />
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#002366]/60">
+                The Institution
+              </span>
+            </div>
+
+            <h2 className="text-4xl md:text-6xl font-serif text-[#002366] leading-[1.05]">
+              Shaping the Future of <br />
+              <span className="italic font-light text-blue-500">
+                Nursing Excellence
+              </span>
             </h2>
-          </motion.div>
+          </div>
 
+          <p className="lg:col-span-5 text-slate-500 text-sm md:text-base border-l border-slate-200 pl-6">
+            A modern institution blending academic rigor with clinical precision,
+            empowering students to lead healthcare transformation globally.
+          </p>
+        </div>
+
+        {/* 🔷 MAIN GRID (LIKE HERO STYLE) */}
+        <div className="grid lg:grid-cols-12 gap-6 items-stretch">
+
+          {/* 🎥 VIDEO BLOCK (LEFT BIG) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="lg:col-span-4"
+            className="lg:col-span-7 relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[4/5] sm:aspect-video lg:aspect-auto lg:h-full group"
           >
-            <p className="text-lg text-slate-500 leading-relaxed border-l-2 border-slate-200 pl-6">
-              A newly established institution committed to redefining education through academic strength and ethical leadership in Mysuru.
-            </p>
-          </motion.div>
-        </div>
-
-        {/* --- Feature Bento Grid --- */}
-        <div className="grid md:grid-cols-3 gap-6 mb-32">
-          {features.map((item, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="group p-8 bg-white border border-slate-100 rounded-[32px] hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-500"
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             >
-              <div className={`w-12 h-12 rounded-2xl ${item.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                {item.icon}
-              </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-3">{item.title}</h3>
-              <p className="text-slate-500 leading-relaxed">{item.desc}</p>
-            </motion.div>
-          ))}
-        </div>
+              <source src="/shiva-nursing1.mp4" type="video/mp4" />
+            </video>
 
-        {/* --- Split Narrative & Vision Section --- */}
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="space-y-8 lg:sticky lg:top-10"
-          >
-            {/* Change: Added 'aspect-[3/4]' for mobile to make it taller, 
-  keeping 'md:aspect-[4/5]' for desktop.
-*/}
-<div className="relative aspect-[3/4] md:aspect-[4/5] w-full overflow-hidden rounded-[32px] md:rounded-[40px] bg-slate-900 group shadow-2xl">
-  
-  {/* --- Background Video --- */}
-  <video
-    autoPlay
-    loop
-    muted
-    playsInline
-    className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
-  >
-    <source src="/shiva-nursing1.mp4" type="video/mp4" />
-    <img src="/hero-image2.png" alt="Nursing Campus" className="object-cover w-full h-full" />
-  </video>
-
-  {/* --- Aesthetic Overlays --- */}
-  {/* Heavier gradient on mobile to ensure text pops against the taller video */}
-  <div className="absolute inset-0 bg-gradient-to-t from-[#0B2C6B] via-[#0B2C6B]/20 to-transparent opacity-90 md:opacity-100" />
-
-  {/* --- Glassmorphic Quote Card --- */}
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ delay: 0.4 }}
-    className="absolute bottom-5 left-5 right-5 md:bottom-5 md:left-5 md:right-5 p-2 md:p-5 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl md:rounded-3xl"
-  >
-    <p className="text-white font-medium italic text-xs md:text-sm leading-relaxed">
-      "Empowering the next generation of compassionate caregivers with advanced clinical competence."
-    </p>
-
-    <div className="mt-4 flex items-center gap-3">
-      <div className="relative flex h-2 w-2">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-        <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
-      </div>
-      <span className="text-[10px] uppercase tracking-[0.2em] text-amber-200/90 font-bold">
-        Campus Life
-      </span>
-    </div>
-  </motion.div>
-</div>
-
-            <div className="p-8 bg-blue-900 rounded-[32px] text-white">
-              <div className="flex items-center gap-4 mb-4">
-                <Landmark className="text-amber-400 w-5 h-5" />
-                <span className="font-semibold uppercase tracking-wider text-xs">Accreditations</span>
-              </div>
-              <p className="text-blue-100 text-sm leading-relaxed">
-                Affiliated to <span className="text-white font-bold">RGUHS Bengaluru</span>, recognized by Govt. of Karnataka, and approved by KNC & INC*.
+            <div className="absolute bottom-6 left-6 right-6 p-4 bg-black/30 backdrop-blur-xl rounded-2xl text-white">
+              <p className="text-sm italic">
+                “Empowering compassionate caregivers of tomorrow.”
               </p>
+              <span className="text-[10px] uppercase tracking-widest text-white/70">
+                RGUHS • KNC • INC
+              </span>
             </div>
           </motion.div>
 
-          <div className="space-y-12 py-10">
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-3xl font-light text-slate-900 mb-6">A New Chapter in <span className="font-semibold">Healthcare Education</span></h3>
-              <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                Through structured academic frameworks and immersive hospital training, we ensure that every student graduates confident and prepared to serve communities locally and globally.
-              </p>
-            </motion.div>
+          {/* 📦 RIGHT SIDE STACK */}
+          <div className="lg:col-span-5 flex flex-col gap-6 h-full">
 
-            <div className="space-y-6">
-              {[
-                { title: "Our Vision", text: "To educate, inspire and empower future nurses to transform lives and advance the health of communities locally and globally.", color: "bg-amber-500" },
-                { title: "Our Mission", text: "Our mission is to advance nursing knowledge through excellence in teaching, research clinical practice and produce nurses who lead change, embrace innovation and improve health care outcomes.", color: "bg-blue-600" }
-              ].map((card, i) => (
+            {/* 🔹 PILLARS (TOP GRID) */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-6 flex-1">
+
+              {pillars.map((item, idx) => (
                 <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  key={idx}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.2 }}
-                  className="relative p-10 bg-white border border-slate-100 rounded-[32px] shadow-sm hover:shadow-md transition-shadow"
+                  transition={{ delay: idx * 0.1 }}
+                  className="bg-white p-6 rounded-[2rem] border border-slate-100 flex items-start gap-4 hover:shadow-md transition-all"
                 >
-                  <div className={`absolute top-10 left-0 w-1 h-12 ${card.color} rounded-r-full`} />
-                  <h4 className="text-xl font-bold text-slate-900 mb-4">{card.title}</h4>
-                  <p className="text-slate-600 leading-relaxed">{card.text}</p>
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#002366] shrink-0">
+                    {item.icon}
+                  </div>
+
+                  <div>
+                    <h3 className="text-sm font-bold text-[#002366]">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
                 </motion.div>
               ))}
             </div>
+
+            {/* 🔹 VISION + MISSION (BOTTOM CARDS) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
+
+              {/* Vision */}
+              <div className="bg-white p-6 rounded-[2rem] border border-slate-100 flex gap-4 items-start">
+                <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+                  <Eye size={18} />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-[#002366]">Vision</h4>
+                  <p className="text-xs text-slate-500 mt-1">
+                    To inspire nurses who transform communities worldwide.
+                  </p>
+                </div>
+              </div>
+
+              {/* Mission */}
+              <div className="bg-white p-6 rounded-[2rem] border border-slate-100 flex gap-4 items-start">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                  <Target size={18} />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-[#002366]">Mission</h4>
+                  <p className="text-xs text-slate-500 mt-1">
+                    Delivering excellence through education & clinical practice.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* 🔹 FOOTER CTA */}
+            <div className="flex items-center justify-between border-t pt-4">
+              <div>
+                <p className="text-[10px] uppercase tracking-widest text-slate-400">
+                  Affiliations
+                </p>
+                <p className="text-xs font-semibold text-[#002366]">
+                  RGUHS • INC • KNC
+                </p>
+              </div>
+
+              <button className="flex items-center gap-2 text-blue-600 font-bold text-sm group">
+                Learn More
+                <ArrowRight
+                  size={16}
+                  className="group-hover:translate-x-1 transition-transform"
+                />
+              </button>
+            </div>
+
           </div>
         </div>
       </div>
