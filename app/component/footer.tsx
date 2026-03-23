@@ -116,18 +116,14 @@ export default function Footer() {
           <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8" />
 
           {/* 🔹 BOTTOM BAR */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-slate-400">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-xs text-slate-400">
 
-            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-              <span>RGUHS</span>
-              <span>INC</span>
-              <span>KNC</span>
-            </div>
+           
 
             <div className="flex items-center gap-3">
+              <span className="w-4 h-px bg-white/10" />
               <span>© {currentYear} Shiva College of Nursing</span>
               <span className="w-4 h-px bg-white/10" />
-              <span>Crafted with precision</span>
             </div>
           </div>
         </div>

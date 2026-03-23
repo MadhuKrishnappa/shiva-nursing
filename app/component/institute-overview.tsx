@@ -148,19 +148,7 @@ export default function InstituteOverview() {
               </div>
             </div>
 
-            {/* 🔹 FOOTER CTA */}
-            <div className="flex items-center justify-between border-t pt-4">
-              <div>
-                <p className="text-[10px] uppercase tracking-widest text-slate-400">
-                  Affiliations
-                </p>
-                <p className="text-xs font-semibold text-[#002366]">
-                  RGUHS •  KNC • INC*
-                </p>
-              </div>
-
-              
-            </div>
+            
 
           </div>
         </div>

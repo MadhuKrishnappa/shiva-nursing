@@ -48,7 +48,7 @@ export default function InnovativeHero() {
                 href="/#admission"
                 className="bg-[#002366] text-white px-10 py-5 rounded-2xl font-semibold hover:bg-blue-600 transition-all duration-500 flex items-center gap-3 group shadow-xl shadow-blue-900/20"
               >
-                Apply for 2026
+                Apply Now
                 <ArrowUpRight
                   size={20}
                   className="group-hover:rotate-45 transition-transform"
@@ -81,7 +81,7 @@ export default function InnovativeHero() {
               </h3>
 
               <p className="text-blue-100/70 text-sm leading-relaxed">
-                Affiliated to RGUHS. Secure your clinical future with our 2026
+                Affiliated to RGUHS. Secure your clinical future with our upcoming
                 batch.
               </p>
             </div>
@@ -179,7 +179,7 @@ export default function InnovativeHero() {
                   Accreditation
                 </div>
                 <div className="text-sm font-semibold leading-snug">
-                  Approved by KNC, INC & Recognized by Govt. of Karnataka.
+                  Approved by KNC & INC*,New Delhi, Affiliated to RGUHS, Bangalore & Recognized by Govt. of Karnataka.
                 </div>
               </div>
             </motion.div>

@@ -103,17 +103,8 @@ export default function CourseHighlights() {
           </div>
 
           {/* 🔹 TRUST ROW */}
-          <div className="mt-10 pt-6 border-t border-slate-100 flex flex-wrap justify-between items-center gap-4 text-xs">
+          <div className="mt-10 pt-6 border-t border-slate-100 flex flex-wrap  items-center gap-4 text-xs">
 
-            <div className="flex flex-wrap gap-4 text-slate-400 font-medium">
-              <span>RGUHS Affiliated</span>
-              <span>INC Approved</span>
-              <span>KNC Recognized</span>
-            </div>
-
-            <div className="text-[#002366] font-semibold text-xs">
-              Admissions Open 2026
-            </div>
           </div>
 
         </div>
