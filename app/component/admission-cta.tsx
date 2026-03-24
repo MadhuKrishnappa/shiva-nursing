@@ -24,7 +24,7 @@ export default function AdmissionCTA() {
           >
             <span className="h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
             <span className="text-[10px] uppercase tracking-[0.3em] text-blue-100/80 font-bold">
-              Admissions Open 2026–27
+              Admissions Open
             </span>
           </motion.div>
 

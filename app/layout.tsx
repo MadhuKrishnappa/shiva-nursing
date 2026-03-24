@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "Nursing College in Karnataka",
     "Basic BSc Nursing",
     "Shiva Institute of Nursing",
-    "Nursing Admission 2026",
+    "Nursing Admission",
   ],
 
   icons: {
