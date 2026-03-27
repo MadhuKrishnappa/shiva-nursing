@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, Building, Send } from "lucide-react";
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function ContactSection() {
   const contactItems = [
@@ -11,6 +13,55 @@ export default function ContactSection() {
     { icon: Building, title: "Governance", content: "Thirumala Educational Trust" },
   ];
 
+  const [formData, setFormData] = useState({
+    from_name: "",
+    from_email: "",
+    phone: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setSuccess(false);
+
+    try {
+      await emailjs.send(
+        "service_w5ax9eg",
+        "template_v8ej32c",
+        {
+          from_name: formData.from_name,
+          from_email: formData.from_email,
+          phone: formData.phone,
+          message: formData.message,
+        },
+        "2edHourvToJXIsmK7"
+      );
+
+      setSuccess(true);
+      setFormData({
+        from_name: "",
+        from_email: "",
+        phone: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      alert("Failed to send message. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section className="relative py-24 md:py-32 bg-[#FBFDFF] overflow-hidden">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50/50 blur-[120px] rounded-full pointer-events-none" />
@@ -18,13 +69,9 @@ export default function ContactSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-16 items-start">
 
-          {/* --- LEFT SIDE: DIRECTORY --- */}
+          {/* LEFT SIDE */}
           <div className="lg:col-span-5 space-y-12">
             <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 mb-6">
-                <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
-                <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">Contact Hub</span>
-              </div>
               <h2 className="text-4xl md:text-6xl font-serif text-[#002366] leading-[1.1] tracking-tight mb-6">
                 Connect with our <br />
                 <span className="italic font-light text-blue-500">Admissions Office.</span>
@@ -33,64 +80,100 @@ export default function ContactSection() {
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-6">
               {contactItems.map((item, i) => (
-                <div key={i} className="group flex gap-5 p-4 rounded-2xl transition-colors hover:bg-white hover:shadow-sm">
-                  <div className="shrink-0 w-12 h-12 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-[#002366] shadow-sm group-hover:bg-[#002366] group-hover:text-white transition-all duration-300">
+                <div key={i} className="group flex gap-5 p-4 rounded-2xl hover:bg-white hover:shadow-sm">
+                  <div className="w-12 h-12 rounded-xl bg-white border flex items-center justify-center text-[#002366]">
                     <item.icon size={20} />
                   </div>
                   <div>
-                    <h3 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{item.title}</h3>
-                    <p className="text-[#002366] font-medium leading-snug">{item.content}</p>
-                    {item.subContent && <p className="text-[#002366] font-medium mt-1">{item.subContent}</p>}
+                    <h3 className="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                      {item.title}
+                    </h3>
+                    <p className="text-[#002366] font-medium">{item.content}</p>
+                    {item.subContent && (
+                      <p className="text-[#002366] font-medium mt-1">{item.subContent}</p>
+                    )}
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* --- RIGHT SIDE: ACTION CARD & MAP --- */}
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="lg:col-span-7">
-            <div className="bg-white border border-slate-100 rounded-[2.5rem] p-4 md:p-6 shadow-[0_20px_50px_rgba(0,35,102,0.04)]">
+          {/* RIGHT SIDE */}
+          <motion.div className="lg:col-span-7">
+            <div className="bg-white border rounded-[2.5rem] p-6 shadow">
 
-              {/* Responsive Map Embed */}
-              <div className="relative w-full h-64 md:h-80 rounded-[2rem] overflow-hidden mb-8 border border-slate-100 shadow-inner bg-slate-100">
+              {/* MAP */}
+              <div className="relative w-full h-64 md:h-80 rounded-[2rem] overflow-hidden mb-8 border">
                 <iframe
                   src="https://www.google.com/maps?q=Shiva+College+of+Nursing+Mysuru&z=17&output=embed"
                   className="absolute inset-0 w-full h-full"
                   style={{ border: 0 }}
-                  allowFullScreen
                   loading="lazy"
-                  title="Shiva College of Nursing Location Pin"
                 />
               </div>
 
-              <div className="px-4 pb-4">
-                <div className="flex justify-between items-start mb-10">
-                  <div>
-                    <h3 className="text-2xl font-bold text-[#002366]">Digital Enquiry</h3>
-                    <p className="text-slate-400 text-sm mt-1">Expected response: Under 24 hours</p>
-                  </div>
-                  <div className="hidden sm:block text-right">
-                    <div className="flex items-center gap-2 text-[#002366]/40 font-bold text-[10px] uppercase tracking-widest">
-                      <Clock size={12} /> Office Timings
-                    </div>
-                    <p className="text-[11px] text-slate-500 mt-1">Mon – Sat | 9:00 AM – 5:00 PM</p>
-                  </div>
+              {/* FORM */}
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <input
+                    name="from_name"
+                    value={formData.from_name}
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="Full Name"
+                    className="w-full px-5 py-4 rounded-2xl bg-slate-50"
+                    required
+                  />
+
+                  <input
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    type="tel"
+                    placeholder="Phone"
+                    className="w-full px-5 py-4 rounded-2xl bg-slate-50"
+                    required
+                  />
                 </div>
 
-                <form className="space-y-4">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <input type="text" placeholder="Full Name" className="w-full px-5 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-500/20 text-sm outline-none" />
-                    <input type="tel" placeholder="Phone" className="w-full px-5 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-500/20 text-sm outline-none" />
-                  </div>
-                  <input type="email" placeholder="Email" className="w-full px-5 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-500/20 text-sm outline-none" />
-                  <textarea rows={3} placeholder="How can we help you?" className="w-full px-5 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-500/20 text-sm outline-none resize-none" />
-                  <button className="w-full mt-4 flex items-center justify-center gap-3 py-5 bg-[#002366] text-white rounded-2xl font-bold text-xs uppercase tracking-[0.2em] hover:bg-blue-600 transition-all">
-                    Submit Enquiry <Send size={16} />
-                  </button>
-                </form>
-              </div>
+                <input
+                  name="from_email"
+                  value={formData.from_email}
+                  onChange={handleChange}
+                  type="email"
+                  placeholder="Email"
+                  className="w-full px-5 py-4 rounded-2xl bg-slate-50"
+                  required
+                />
+
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={3}
+                  placeholder="How can we help you?"
+                  className="w-full px-5 py-4 rounded-2xl bg-slate-50"
+                  required
+                />
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full flex items-center justify-center gap-3 py-5 bg-[#002366] text-white rounded-2xl font-bold text-xs uppercase tracking-[0.2em] hover:bg-blue-600"
+                >
+                  {loading ? "Sending..." : "Submit Enquiry"}
+                  <Send size={16} />
+                </button>
+
+                {success && (
+                  <p className="text-green-600 text-sm text-center mt-2">
+                    Message sent successfully!
+                  </p>
+                )}
+              </form>
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>
