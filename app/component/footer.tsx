@@ -48,7 +48,7 @@ export default function Footer() {
 
               {/* SOCIAL */}
               <div className="flex gap-3">
-                {[Instagram, Linkedin, Facebook].map((Icon, i) => (
+                {[Instagram].map((Icon, i) => (
                   <Link
                     key={i}
                     href="#"
@@ -96,16 +96,58 @@ export default function Footer() {
               </h4>
 
               <div className="flex flex-col gap-3 text-sm text-slate-300">
-                <Link href="/#about" className="hover:text-white transition">
-                  About Institute
+               
+
+                <Link
+                  href="/#about"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const el = document.getElementById("about");
+                    if (el) {
+                      el.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                  className="hover:text-white transition"
+                >
+                   About Institute
                 </Link>
-                <Link href="/#courses" className="hover:text-white transition">
+                <Link
+                  href="/#courses"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const el = document.getElementById("courses");
+                    if (el) {
+                      el.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                  className="hover:text-white transition"
+                >
                   Courses
                 </Link>
-                <Link href="/#admission" className="hover:text-white transition">
+                <Link
+                  href="/#admission"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const el = document.getElementById("admission");
+                    if (el) {
+                      el.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                  className="hover:text-white transition"
+                >
                   Admissions
                 </Link>
-                <Link href="/#contact" className="hover:text-white transition">
+                <Link
+                  href="/#contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const el = document.getElementById("contact");
+                    if (el) {
+                      el.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                  className="hover:text-white transition"
+                >
                   Contact
                 </Link>
               </div>
@@ -118,7 +160,7 @@ export default function Footer() {
           {/* 🔹 BOTTOM BAR */}
           <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-xs text-slate-400">
 
-           
+
 
             <div className="flex items-center gap-3">
               <span className="w-4 h-px bg-white/10" />

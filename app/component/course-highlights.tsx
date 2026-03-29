@@ -31,7 +31,7 @@ export default function CourseHighlights() {
     },
     {
       title: "Recognition",
-      value: "KNC & INC*",
+      value: "KSNC & INC*",
       sub: "Approved",
       icon: ShieldCheck,
     },

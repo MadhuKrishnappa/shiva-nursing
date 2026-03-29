@@ -121,7 +121,7 @@ export default function ContactSection() {
                     onChange={handleChange}
                     type="text"
                     placeholder="Full Name"
-                    className="w-full px-5 py-4 rounded-2xl bg-slate-50"
+                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 placeholder:text-gray-600"
                     required
                   />
 
@@ -131,7 +131,7 @@ export default function ContactSection() {
                     onChange={handleChange}
                     type="tel"
                     placeholder="Phone"
-                    className="w-full px-5 py-4 rounded-2xl bg-slate-50"
+                    className="w-full px-5 py-4 rounded-2xl bg-slate-50 placeholder:text-gray-600"
                     required
                   />
                 </div>
@@ -142,7 +142,7 @@ export default function ContactSection() {
                   onChange={handleChange}
                   type="email"
                   placeholder="Email"
-                  className="w-full px-5 py-4 rounded-2xl bg-slate-50"
+                  className="w-full px-5 py-4 rounded-2xl bg-slate-50 placeholder:text-gray-600"
                   required
                 />
 
@@ -152,7 +152,7 @@ export default function ContactSection() {
                   onChange={handleChange}
                   rows={3}
                   placeholder="How can we help you?"
-                  className="w-full px-5 py-4 rounded-2xl bg-slate-50"
+                  className="w-full px-5 py-4 rounded-2xl bg-slate-50 placeholder:text-gray-600"
                   required
                 />
 

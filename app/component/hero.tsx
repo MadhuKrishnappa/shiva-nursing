@@ -179,7 +179,7 @@ export default function InnovativeHero() {
                   Accreditation
                 </div>
                 <div className="text-sm font-semibold leading-snug">
-                  Approved by KNC & INC*,New Delhi, Affiliated to RGUHS, Bangalore & Recognized by Govt. of Karnataka.
+                  Approved by KSNC & INC*,New Delhi, Affiliated to RGUHS, Bangalore & Recognized by Govt. of Karnataka.
                 </div>
               </div>
             </motion.div>
