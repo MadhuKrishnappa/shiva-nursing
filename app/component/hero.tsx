@@ -81,8 +81,7 @@ export default function InnovativeHero() {
               </h3>
 
               <p className="text-blue-100/70 text-sm leading-relaxed">
-                Affiliated to RGUHS. Secure your clinical future with our upcoming
-                batch.
+                Approved by KSNC & INC*,New Delhi, Affiliated to RGUHS, Bangalore & Recognized by Govt. of Karnataka.
               </p>
             </div>
 

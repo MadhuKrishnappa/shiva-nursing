@@ -4,6 +4,7 @@ import WhyChooseUs from "./component/why-choose-us";
 import CourseHighlights from "./component/course-highlights";
 import AdmissionCTA from "./component/admission-cta";
 import ContactSection from "./component/contact-section";
+import InnovativeGallery from "./component/gallery";
 
 export default function Home() {
   return (
@@ -16,6 +17,11 @@ export default function Home() {
       {/* Institute Overview */}
       <section id="about">
         <InstituteOverview />
+      </section>
+
+      {/* Institute Overview */}
+      <section id="gallery">
+        <InnovativeGallery />
       </section>
 
       {/* Why Choose Us */}

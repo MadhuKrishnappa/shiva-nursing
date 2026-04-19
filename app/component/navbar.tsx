@@ -13,6 +13,7 @@ export default function Navbar() {
   const navLinks = [
     { name: "Home", id: "home" },
     { name: "About", id: "about" },
+    { name: "Gallery", id: "gallery" },
     { name: "Why Us", id: "why" },
     { name: "Courses", id: "courses" },
     { name: "Admissions", id: "admission" },
@@ -31,36 +32,36 @@ export default function Navbar() {
 
   // ✅ Active section detection (SCROLL BASED)
   useEffect(() => {
-  const sections = navLinks.map((link) => link.id);
+    const sections = navLinks.map((link) => link.id);
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      let maxRatio = 0;
-      let currentSection = "";
+    const observer = new IntersectionObserver(
+      (entries) => {
+        let maxRatio = 0;
+        let currentSection = "";
 
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
-          maxRatio = entry.intersectionRatio;
-          currentSection = entry.target.id;
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+            maxRatio = entry.intersectionRatio;
+            currentSection = entry.target.id;
+          }
+        });
+
+        if (currentSection) {
+          setActiveHash(`#${currentSection}`);
         }
-      });
-
-      if (currentSection) {
-        setActiveHash(`#${currentSection}`);
+      },
+      {
+        threshold: [0.2, 0.4, 0.6, 0.8], // more accuracy
       }
-    },
-    {
-      threshold: [0.2, 0.4, 0.6, 0.8], // more accuracy
-    }
-  );
+    );
 
-  sections.forEach((id) => {
-    const el = document.getElementById(id);
-    if (el) observer.observe(el);
-  });
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
 
-  return () => observer.disconnect();
-}, []);
+    return () => observer.disconnect();
+  }, []);
 
   // ✅ Sync URL hash (clean UX)
   useEffect(() => {
@@ -86,10 +87,9 @@ export default function Navbar() {
       <nav
         className={`
           mx-auto max-w-7xl transition-all duration-500 ease-in-out
-          ${
-            scrolled
-              ? "bg-white/80 backdrop-blur-md shadow-[0_8px_32px_rgba(0,35,102,0.1)] border border-white/20 py-2 px-6 rounded-full"
-              : "bg-transparent py-4 px-2 rounded-2xl"
+          ${scrolled
+            ? "bg-white/80 backdrop-blur-md shadow-[0_8px_32px_rgba(0,35,102,0.1)] border border-white/20 py-2 px-6 rounded-full"
+            : "bg-transparent py-4 px-2 rounded-2xl"
           }
           flex items-center justify-between
         `}
@@ -104,16 +104,34 @@ export default function Navbar() {
             priority
             className="object-contain transition-all duration-500 group-hover:scale-110"
           />
-          <div className="flex flex-col">
+          <div className="flex flex-col leading-none">
+
+            {/* SHIVA (Brand Highlight) */}
             <span
-              className={`font-serif font-bold tracking-tight transition-all duration-500 ${
-                scrolled ? "text-lg" : "text-xl"
-              } text-[#002366]`}
-            >
-              SHIVA <span className="text-blue-500">NURSING</span>
+              className={`
+                  font-serif font-bold tracking-widest transition-all duration-500
+                  ${scrolled ? "text-lg" : "text-lg"}
+                  text-[#002366] flex items-center gap-2
+                `}
+                >
+              SHIVA
+              {/* <span className="h-[2px] w-6 bg-[#D4AF37] inline-block"></span> */}
             </span>
+
+            {/* College Name */}
+            <span
+              className={`
+                font-serif transition-all duration-500 font-bold
+                ${scrolled ? "text-[11px]" : "text-xs"}
+                text-blue-500 tracking-wide
+              `}
+            >
+              College of Nursing
+            </span>
+
+            {/* Campus */}
             {!scrolled && (
-              <span className="text-[10px] uppercase tracking-[0.3em] text-gray-500 font-medium">
+              <span className="text-[9px] uppercase tracking-[0.35em] text-[#002366]  mt-1">
                 Mysuru Campus
               </span>
             )}
@@ -131,10 +149,9 @@ export default function Navbar() {
                 onClick={() => handleNavClick(link.id)}
                 className={`
                   px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300
-                  ${
-                    isActive
-                      ? "bg-white text-[#002366] shadow-sm"
-                      : "text-gray-500 hover:text-[#002366]"
+                  ${isActive
+                    ? "bg-white text-[#002366] shadow-sm"
+                    : "text-gray-500 hover:text-[#002366]"
                   }
                 `}
               >

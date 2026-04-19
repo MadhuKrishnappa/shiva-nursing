@@ -112,6 +112,19 @@ export default function Footer() {
                    About Institute
                 </Link>
                 <Link
+                  href="/#gallery"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const el = document.getElementById("gallery");
+                    if (el) {
+                      el.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                  className="hover:text-white transition"
+                >
+                  Gallery
+                </Link>
+                <Link
                   href="/#courses"
                   onClick={(e) => {
                     e.preventDefault();
