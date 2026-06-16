@@ -81,7 +81,7 @@ export default function InnovativeHero() {
               </h3>
 
               <p className="text-blue-100/70 text-sm leading-relaxed">
-                Approved by KSNC & INC*,New Delhi, Affiliated to RGUHS, Bangalore & Recognized by Govt. of Karnataka.
+                Approved by KSNC & INC,New Delhi, Affiliated to RGUHS, Bangalore & Recognized by Govt. of Karnataka.
               </p>
             </div>
 
@@ -178,7 +178,7 @@ export default function InnovativeHero() {
                   Accreditation
                 </div>
                 <div className="text-sm font-semibold leading-snug">
-                  Approved by KSNC & INC*,New Delhi, Affiliated to RGUHS, Bangalore & Recognized by Govt. of Karnataka.
+                  Approved by KSNC & INC,New Delhi, Affiliated to RGUHS, Bangalore & Recognized by Govt. of Karnataka.
                 </div>
               </div>
             </motion.div>

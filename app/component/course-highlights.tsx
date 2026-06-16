@@ -31,7 +31,7 @@ export default function CourseHighlights() {
     },
     {
       title: "Recognition",
-      value: "KSNC & INC*",
+      value: "Approved by KSNC & INC,New Delhi, Affiliated to RGUHS, Bangalore & Recognized by Govt. of Karnataka.",
       sub: "Approved",
       icon: ShieldCheck,
     },
@@ -66,40 +66,50 @@ export default function CourseHighlights() {
           </div>
 
           {/* 🔹 COMPACT GRID */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-
-            {highlights.map((item, i) => {
+          {/* TOP HIGHLIGHTS */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {highlights.slice(0, 3).map((item, i) => {
               const Icon = item.icon;
 
               return (
-                <motion.div
+                <div
                   key={i}
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.08 }}
-                  viewport={{ once: true }}
-                  className="group p-5 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all duration-300"
+                  className="p-5 rounded-2xl border border-slate-100 bg-slate-50"
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <Icon
-                      size={20}
-                      className="text-[#002366] group-hover:text-blue-500 transition"
-                    />
-                    <span className="text-[9px] uppercase tracking-widest text-slate-400 font-bold">
-                      {item.title}
-                    </span>
-                  </div>
+                  <Icon size={20} className="text-[#002366] mb-3" />
 
-                  <h3 className="text-lg md:text-xl font-bold text-[#002366] leading-tight">
+                  <p className="text-xs uppercase tracking-wider text-slate-400 mb-2">
+                    {item.title}
+                  </p>
+
+                  <h3 className="text-xl font-bold text-[#002366]">
                     {item.value}
                   </h3>
 
-                  <p className="text-[11px] text-slate-400 mt-1">
+                  <p className="text-sm text-slate-500 mt-1">
                     {item.sub}
                   </p>
-                </motion.div>
+                </div>
               );
             })}
+          </div>
+
+          {/* RECOGNITION */}
+          <div className="mt-6 rounded-3xl bg-gradient-to-r from-[#002366] to-[#002366] p-8 text-white">
+            <div className="flex items-start gap-4">
+              <ShieldCheck className="w-8 h-8 shrink-0 mt-1" />
+
+              <div>
+                <p className="text-xs uppercase tracking-[0.2em] opacity-70 mb-3">
+                  Recognition & Accreditation
+                </p>
+
+                <h3 className="text-lg md:text-xl font-semibold leading-relaxed">
+                  Approved by KSNC & INC, New Delhi, affiliated to RGUHS,
+                  Bengaluru and recognized by the Government of Karnataka.
+                </h3>
+              </div>
+            </div>
           </div>
 
           {/* 🔹 TRUST ROW */}
